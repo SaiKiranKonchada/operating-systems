@@ -1,0 +1,18 @@
+load --int=timer  ../stage_19/19_0/timer.xsm
+load --int=6 ../stage_19/19_0/int6.xsm
+load --int=7 ../stage_19/19_0/int7.xsm
+load --int=9 ../stage_19/19_0/int9.xsm
+load --int=10 ../stage_19/19_0/int10.xsm
+load --module 0 ../stage_19/19_0/module0.xsm
+load --module 1 ../stage_19/19_0/module1.xsm
+load --module 2 ../stage_19/19_0/module2.xsm
+load --module 4 ../stage_19/19_0/module4.xsm
+load --module 5 ../stage_19/19_0/module5.xsm
+load --module 7 ../stage_19/19_0/boot_module.xsm
+load --os  ../stage_19/19_0/os_startup.xsm
+load --init ../stage_19/19_0/init.xsm
+load --int=console ../stage_19/19_0/console.xsm
+load --int=disk ../stage_19/19_0/disk.xsm
+load --exhandler ../stage/19/19_0/exception.xsm
+load --library ../expl/library.lib
+load --idle ../stage_19/19_0/idle.xsm
