@@ -1,0 +1,44 @@
+alias functionNum R1;
+alias currentPID R2;
+alias printedword R3;
+alias returnvalue R0;
+
+
+
+if ( functionNum == 3 ) then 
+            multipush(R0,R1,R2,R3);
+            functionNum = 8;
+            currentPID = [SYSTEM_STATUS_TABLE+1];
+            call MOD_0;
+            multipop(R0,R1,R2,R3);
+            print printedword;
+            multipush(R0,R1,R2,R3);
+            
+            functionNum = 9;
+            currentPID = [SYSTEM_STATUS_TABLE+1];
+            call MOD_0;
+            alias save R5;
+            save=returnvalue;
+            multipop(R0,R1,R2,R3);
+            return;
+endif;      
+ 
+
+            if ( functionNum == 4 ) then
+                     breakpoint;
+                     
+                     multipush(R0,R1,R2,R3);
+                     functionNum = 8;
+                     currentPID = [SYSTEM_STATUS_TABLE+1];
+                     call MOD_0;
+                     multipop(R0,R1,R2,R3);
+                     read;
+                     [PROCESS_TABLE + [SYSTEM_STATUS_TABLE+1] * 16 + 4] = WAIT_TERMINAL;
+                     multipush(R0,R1,R2,R3);
+                     call MOD_5;
+                     multipop(R0,R1,R2,R3);
+                     [[PTBR + 2 * ((printedword) / 512)] * 512 + ((printedword) % 512)]=[PROCESS_TABLE + currentPID * 16 + 8];
+                     return;
+            else  
+                     return;
+            endif;

@@ -1,0 +1,26 @@
+int main()
+{
+decl
+ int num1,num2,rem,d,n,temp;
+enddecl
+begin
+    
+   breakpoint;
+   
+   temp=exposcall("Read",-1,num1);
+   n=num1;
+   temp=exposcall("Read",-1,num2);
+   d=num2;
+   rem=(n%d);
+   while(rem!=0) do
+     n=d;
+     d=rem;
+     rem=(n%d);
+   endwhile;
+   
+   temp=exposcall("Write",-2,d);
+   breakpoint;
+      return 0;
+end
+}
+

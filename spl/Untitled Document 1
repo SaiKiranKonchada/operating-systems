@@ -1,0 +1,10 @@
+
+counter==0;
+sum=0;
+while(counter<=20)
+ sum=sum+counter*counter;
+ counter=counter+1;
+endwhile;
+print sum;
+
+

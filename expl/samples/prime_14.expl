@@ -1,0 +1,28 @@
+
+int main()
+{
+decl
+ int temp,num,counter,dup;
+enddecl
+begin
+ num=1;
+ while(num<=100) do
+    counter=0;
+    dup=1;
+    while(dup<=num) do
+      if((num%dup)==0) then
+        counter=counter+1;
+      endif;
+      dup=dup+1;
+    endwhile;
+    if(counter==2) then
+      temp=exposcall("Write",-2,num);
+    endif;
+    num=num+1;
+ endwhile;
+return 0;
+end
+}
+ 
+ 
+

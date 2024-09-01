@@ -1,0 +1,9 @@
+load --int=timer  ../STAGE_15/15_0/timer.xsm
+load --int=7 ../STAGE_15/15_0/int7.xsm
+load --int=10 ../STAGE_15/15_0/int10.xsm
+load --module 0 ../STAGE_15/15_0/module_0.xsm
+load --module 4 ../STAGE_15/15_0/module4.xsm
+load --module 5 ../STAGE_15/15_0/module5.xsm
+load --module 7 ../STAGE_15/15_0/boot_module.xsm
+load --os  ../spl/spl_progs/os_startup_13.xsm
+load --init ../STAGE_15/15_0/init.xsm

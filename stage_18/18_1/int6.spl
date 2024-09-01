@@ -1,0 +1,50 @@
+breakpoint;
+
+alias userSP R0;
+alias file_descriptor R1;
+
+userSP=SP;
+alias currentpid R2;
+alias word R3;
+
+currentpid=[SYSTEM_STATUS_TABLE+1];
+
+
+[PROCESS_TABLE+currentpid*16+9]=7;
+[PROCESS_TABLE+currentpid*16+13]=SP;
+
+SP=[PROCESS_TABLE+currentpid*16+11]*512-1;
+
+file_descriptor=[[PTBR + 2 * ((userSP - 4) / 512)] * 512 + ((userSP - 4) % 512)];
+
+if(file_descriptor==-1) then 
+
+   word = [[PTBR + 2 * ((userSP - 3) / 512)] * 512 + ((userSP - 3) % 512)];
+   
+   multipush(R0,R1,R2,R3);
+   alias func_num R1;
+   func_num=4;
+   alias current_pid R2;
+   alias print_word R3;
+   current_pid=[SYSTEM_STATUS_TABLE+1];
+   print_word = [[PTBR + 2 * ((userSP - 3) / 512)] * 512 + ((userSP - 3) % 512)];
+   call MOD_4;
+   multipop(R0,R1,R2,R3);
+   
+   alias physicalAddrRetVal R6;
+   physicalAddrRetVal = ([PTBR + 2 * ((userSP - 1) / 512)] * 512) + ((userSP - 1) % 512);
+   [physicalAddrRetVal]=0;  
+   
+else 
+     alias physicalAddrRetVal R5;
+     physicalAddrRetVal = ([PTBR + 2 * ((userSP - 1) / 512)] * 512) + ((userSP - 1) % 512);
+     [physicalAddrRetVal]=-1;  
+     
+endif;
+
+SP=userSP;
+[PROCESS_TABLE+[SYSTEM_STATUS_TABLE+1]*16+9]=0;
+breakpoint;
+
+ireturn;
+

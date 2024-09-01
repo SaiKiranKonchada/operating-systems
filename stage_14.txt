@@ -1,0 +1,6 @@
+load --int=timer ../spl/spl_progs/timer_14.xsm
+load --module 5 ../spl/spl_progs/scheduler_14.xsm
+load --int=10 ../spl/spl_progs/int10.xsm
+load --init ../expl/samples/STAGE_13_1.xsm
+load --module 7 ../spl/spl_progs/boot_module_14.xsm
+load --idle ../expl/samples/idle_13.xsm
